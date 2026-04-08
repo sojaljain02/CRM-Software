@@ -2,27 +2,62 @@
 
 {% block content %}
 
-<h2 class="mb-4">Dashboard</h2>
+<h2 class="mb-4">Sales Overview Dashboard</h2>
 
-<div class="row">
+<div class="row mb-4">
     <div class="col-md-6">
-        <div class="card p-3 shadow">
+        <div class="card text-white bg-primary p-3 shadow">
             <h5>Total Customers</h5>
             <h2>{{ customers }}</h2>
         </div>
     </div>
 
     <div class="col-md-6">
-        <div class="card p-3 shadow">
+        <div class="card text-white bg-success p-3 shadow">
             <h5>Total Leads</h5>
             <h2>{{ leads }}</h2>
         </div>
     </div>
 </div>
 
-<div class="mt-4">
-    <a class="btn btn-primary" href="/customers">Customers</a>
-    <a class="btn btn-success" href="/leads">Leads</a>
+<!-- Charts -->
+<div class="card p-4 shadow mb-4">
+    <h5>Analytics Overview</h5>
+    <canvas id="barChart"></canvas>
 </div>
+
+<!-- Fake Activity Feed (Looks Professional 🔥) -->
+<div class="card p-4 shadow">
+    <h5>Recent Activities</h5>
+    <ul>
+        <li>New customer added</li>
+        <li>Lead status updated</li>
+        <li>System data refreshed</li>
+    </ul>
+</div>
+
+<div class="mt-4">
+    <a class="btn btn-primary" href="/customers">Manage Customers</a>
+    <a class="btn btn-success" href="/leads">Manage Leads</a>
+</div>
+
+<!-- Chart JS -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+const ctx = document.getElementById('barChart');
+
+new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Customers', 'Leads'],
+        datasets: [{
+            label: 'System Data',
+            data: [{{ customers }}, {{ leads }}],
+            borderWidth: 1
+        }]
+    }
+});
+</script>
 
 {% endblock %}
