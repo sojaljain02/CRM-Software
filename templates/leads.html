@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>Leads</h2>
+
+<form method="POST" class="row g-2 mb-4">
+    <div class="col-md-4">
+        <input class="form-control" name="name" placeholder="Lead Name" required>
+    </div>
+
+    <div class="col-md-4">
+        <select class="form-control" name="status">
+            <option>New</option>
+            <option>Contacted</option>
+            <option>Closed</option>
+        </select>
+    </div>
+
+    <div class="col-md-4">
+        <button class="btn btn-success w-100">Add Lead</button>
+    </div>
+</form>
+
+<table class="table table-bordered bg-white shadow">
+    <tr>
+        <th>Name</th>
+        <th>Status</th>
+    </tr>
+
+    {% for l in data %}
+    <tr>
+        <td>{{ l[1] }}</td>
+        <td>{{ l[2] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
