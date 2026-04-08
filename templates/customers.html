@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>Customers</h2>
+
+<form method="POST" class="row g-2 mb-4">
+    <div class="col-md-4">
+        <input class="form-control" name="name" placeholder="Name" required>
+    </div>
+    <div class="col-md-4">
+        <input class="form-control" name="email" placeholder="Email" required>
+    </div>
+    <div class="col-md-4">
+        <button class="btn btn-primary w-100">Add Customer</button>
+    </div>
+</form>
+
+<table class="table table-bordered bg-white shadow">
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+    </tr>
+
+    {% for c in data %}
+    <tr>
+        <td>{{ c[1] }}</td>
+        <td>{{ c[2] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
