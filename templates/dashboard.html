@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2 class="mb-4">Dashboard</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card p-3 shadow">
+            <h5>Total Customers</h5>
+            <h2>{{ customers }}</h2>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card p-3 shadow">
+            <h5>Total Leads</h5>
+            <h2>{{ leads }}</h2>
+        </div>
+    </div>
+</div>
+
+<div class="mt-4">
+    <a class="btn btn-primary" href="/customers">Customers</a>
+    <a class="btn btn-success" href="/leads">Leads</a>
+</div>
+
+{% endblock %}
